@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Forms;
 
 namespace XFLoginGoogle.ControlCustom
 {
-    public class SignInButtonCustom 
+    public class SignInButtonCustom  : Button
     {
 
     }
