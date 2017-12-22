@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:img="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:convert="clr-namespace:XFLoginGoogle.Converters"
+             x:Class="XFLoginGoogle.Views.LoginPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convert:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="0,10,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" IsVisible="{Binding IsLogin}">
+                <Label Text="{Binding GoogleUser.NameDisplay, StringFormat='Name Display: {0}'}"/>
+                <Label Text="{Binding GoogleUser.Email, StringFormat='Email: {0}'}"/>
+                <!--<img:CachedImage Source="{Binding GoogleUser.Picture.OriginalString}" HeightRequest="80" WidthRequest="80"/>-->
+                <Image Source="{Binding GoogleUser.Picture.OriginalString}" HeightRequest="100" WidthRequest="100"></Image>
+            </StackLayout>
+            <Button Grid.Row="1" Grid.Column="0" Text="Login with google" Command="{Binding LoginCommand}" IsVisible="{Binding IsLogin , Converter={StaticResource InvertBooleanConverter}}"/>
+            <Button Grid.Row="2" Grid.Column="0" Text="Logout" Command="{Binding LogoutCommand}" IsVisible="{Binding IsLogin}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
